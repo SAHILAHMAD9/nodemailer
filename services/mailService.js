@@ -1,5 +1,7 @@
 const nodemailer = require('nodemailer');
 const config = require('../config/mailConfig.json');
+const fs = require('fs');
+const path = require('path');
 
 let transporter;
 let testAccountPromise;
@@ -35,14 +37,28 @@ if (useEthereal) {
   testAccountPromise = Promise.resolve();
 }
 
-const sendMail = async (to, subject, message) => {
+// Read and cache the email template
+let emailTemplate = '';
+try {
+  emailTemplate = fs.readFileSync(path.join(__dirname, '../emailTemplate.html'), 'utf8');
+} catch (err) {
+  console.error('Failed to read email template:', err);
+}
+
+// Update sendMail to accept 'name' parameter
+const sendMail = async (to, subject, message, name) => {
   await testAccountPromise;
+
+  // Replace placeholders in the template
+  let htmlBody = emailTemplate
+    .replace(/{{name}}/g, name)
+    .replace(/{{message}}/g, message);
 
   const mailOptions = {
     from: `${config.domain} <${transporter.options.auth.user}>`,
     to: to,
     subject: subject,
-    html: `<p>${message}</p>`
+    html: htmlBody
   };
 
   const info = await transporter.sendMail(mailOptions);
