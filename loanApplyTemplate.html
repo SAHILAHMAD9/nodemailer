@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New Loan Application</title>
+  <style>
+    body { background:#f4f6fb; margin:0; padding:0; font-family:'Segoe UI', Arial, sans-serif; }
+    .container { max-width:700px; margin:32px auto; background:#fff; border-radius:12px; box-shadow:0 4px 24px rgba(0,0,0,.08); overflow:hidden; }
+    .header { background:linear-gradient(90deg,#00c4cc,#4f8cff); color:#fff; padding:24px; text-align:center; }
+    .header h1 { margin:0; font-size:1.6rem; }
+    .content { padding:24px; color:#111827; }
+    .grid { display:block; }
+    .field { background:#f8f9fc; border:1px solid #eef1f6; border-radius:10px; padding:12px 14px; margin:10px 0; }
+    .label { display:block; font-size:12px; text-transform:uppercase; letter-spacing:.6px; color:#6b7280; margin-bottom:6px; }
+    .value { font-size:15px; word-break:break-word; }
+    .message { white-space:pre-wrap; line-height:1.6; }
+    .footer { background:#f4f6fb; color:#9aa4b2; text-align:center; font-size:12px; padding:14px 0; }
+    @media (max-width:600px){ .container{ margin:0; border-radius:0 } .content,.header{ padding:16px } }
+  </style>
+  <!--
+    Placeholders used by the server:
+      {{product}}, {{name}}, {{email}}, {{mobileNumber}},
+      {{city}}, {{loanAmount}}, {{companyName}}, {{monthlyIncome}}, {{message}}
+  -->
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>New Loan Application</h1>
+    </div>
+    <div class="content">
+      <div class="grid">
+        <div class="field"><span class="label">Product</span><div class="value">{{product}}</div></div>
+        <div class="field"><span class="label">Name</span><div class="value">{{name}}</div></div>
+        <div class="field"><span class="label">Email</span><div class="value">{{email}}</div></div>
+        <div class="field"><span class="label">Mobile Number</span><div class="value">{{mobileNumber}}</div></div>
+        <div class="field"><span class="label">City</span><div class="value">{{city}}</div></div>
+        <div class="field"><span class="label">Loan Amount</span><div class="value">{{loanAmount}}</div></div>
+        <div class="field"><span class="label">Company Name</span><div class="value">{{companyName}}</div></div>
+        <div class="field"><span class="label">Monthly Income</span><div class="value">{{monthlyIncome}}</div></div>
+        <div class="field"><span class="label">Message</span><div class="value message">{{message}}</div></div>
+      </div>
+    </div>
+    <div class="footer">This email was generated from the website loan application form.</div>
+  </div>
+</body>
+</html>
+

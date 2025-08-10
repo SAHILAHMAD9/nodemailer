@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Email Notification</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New Contact Message</title>
   <style>
     body {
       background: #f4f6fb;
@@ -12,79 +12,95 @@
       font-family: 'Segoe UI', Arial, sans-serif;
     }
     .container {
-      max-width: 600px;
+      max-width: 640px;
       margin: 40px auto;
-      background: #fff;
+      background: #ffffff;
       border-radius: 12px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
       overflow: hidden;
     }
     .header {
-      background: #4f8cff;
-      color: #fff;
-      padding: 32px 24px 20px 24px;
+      background: linear-gradient(90deg, #00c4cc, #4f8cff);
+      color: #ffffff;
+      padding: 28px 24px;
       text-align: center;
     }
     .header h1 {
       margin: 0;
-      font-size: 2rem;
-      letter-spacing: 1px;
+      font-size: 1.6rem;
+      letter-spacing: 0.5px;
     }
     .content {
-      padding: 32px 24px 24px 24px;
-      text-align: left;
+      padding: 28px 24px;
+      color: #2b2b2b;
     }
-    .content h2 {
-      color: #333;
-      margin-top: 0;
-      font-size: 1.3rem;
+    .pair {
+      display: block;
+      margin: 12px 0;
+      padding: 12px 14px;
+      background: #f8f9fc;
+      border: 1px solid #eef1f6;
+      border-radius: 8px;
     }
-    .content p {
-      color: #555;
-      font-size: 1.05rem;
+    .label {
+      display: block;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: #6b7280;
+      margin-bottom: 6px;
+    }
+    .value {
+      font-size: 15px;
+      color: #111827;
+      word-break: break-word;
+    }
+    .message {
+      white-space: pre-wrap;
       line-height: 1.6;
-    }
-    .cta-btn {
-      display: inline-block;
-      margin-top: 24px;
-      padding: 12px 32px;
-      background: #4f8cff;
-      color: #fff;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1rem;
-      box-shadow: 0 2px 8px rgba(79,140,255,0.12);
-      transition: background 0.2s;
-    }
-    .cta-btn:hover {
-      background: #2563d8;
     }
     .footer {
       background: #f4f6fb;
-      color: #aaa;
+      color: #9aa4b2;
       text-align: center;
       font-size: 12px;
-      padding: 18px 0;
+      padding: 16px 0;
     }
     @media (max-width: 600px) {
       .container { margin: 0; border-radius: 0; }
-      .content, .header { padding: 18px 8px; }
+      .content, .header { padding: 18px 12px; }
     }
   </style>
+  <!--
+    Available placeholders:
+      {{name}}, {{senderEmail}}, {{subject}}, {{message}}
+  -->
 </head>
 <body>
   <div class="container">
     <div class="header">
-      <h1>Your Company</h1>
+      <h1>New Contact Form Submission</h1>
     </div>
     <div class="content">
-      <h2>Hello, {{name}}</h2>
-      <p>{{message}}</p>
-      <a href="#" class="cta-btn">Visit Our Website</a>
+      <div class="pair">
+        <span class="label">Name</span>
+        <div class="value">{{name}}</div>
+      </div>
+      <div class="pair">
+        <span class="label">Email</span>
+        <div class="value">{{senderEmail}}</div>
+      </div>
+      <div class="pair">
+        <span class="label">Subject</span>
+        <div class="value">{{subject}}</div>
+      </div>
+      <div class="pair">
+        <span class="label">Message</span>
+        <div class="value message">{{message}}</div>
+      </div>
     </div>
     <div class="footer">
-      This is an automated email. Please do not reply.
+      This is an automated message from your website contact form.
     </div>
   </div>
 </body>
